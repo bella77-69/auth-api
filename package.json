@@ -9,6 +9,7 @@
   "author": "bella77-69",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
     "mongoose": "^6.1.7"
   },
