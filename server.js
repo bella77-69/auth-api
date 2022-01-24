@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 app.use(express.json());
 
 const mongoose = require('mongoose');
@@ -17,6 +19,12 @@ app.get('/', (req, res) => {
     res.send({body: 'hello'})
 });
 
+app.use(cookieParser());
+
+app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:4200']
+}));
 
 app.use("/api", routes);
 
