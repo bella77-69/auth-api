@@ -15,8 +15,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  // res.status(200).json({success: true, msg: "Connected"});
-  res.send({ body: "hello" });
+  res.send({message: "hello" });
 });
 
 app.use(cookieParser());
