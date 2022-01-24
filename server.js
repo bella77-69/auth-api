@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 app.use(express.json());
 
-const mongoose = require('mongoose');
-const routes = require('./routes/routes');
+const mongoose = require("mongoose");
+const routes = require("./routes/routes");
 
 const db = require("./config/keys").mongoURI;
 
@@ -14,17 +14,23 @@ mongoose
   .then(() => console.log("MongoDB successfully connected"))
   .catch((err) => console.log(err));
 
-app.get('/', (req, res) => {
-    // res.status(200).json({success: true, msg: "Connected"});
-    res.send({body: 'hello'})
+app.get("/", (req, res) => {
+  // res.status(200).json({success: true, msg: "Connected"});
+  res.send({ body: "hello" });
 });
 
 app.use(cookieParser());
 
-app.use(cors({
+app.use(
+  cors({
     credentials: true,
-    origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:4200']
-}));
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:8080",
+      "http://localhost:4200",
+    ],
+  })
+);
 
 app.use("/api", routes);
 
